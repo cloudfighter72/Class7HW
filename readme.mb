@@ -14,13 +14,6 @@ Search for or click "Security Groups" on side menu
 - CREATE SECURITY GROUP
 - GREEN POPUP SHOWS UPON SUCCESSFUL CREATION OF SECURITY GROUP
 
-- PORTS -
-* 21 = FTP (File Transfer Protocol) - upload files into a file share
-* 22 = SSH (Secure Shell) - log into a Linux instance
-* 22 = SFTP (Secure File Transfer Protocol) - upload files using SSH
-* 80 = HTTP - access unsecured websites
-* 443 = HTTPS - access secured websites
-
 - CREATE EC2
 - LAUNCH INSTANCES (ORANGE BUTTON)
 - NAME THE INSTANCE/EC2/SERVER ANYTHING	(COMPUTE NAME IS ALL THAT MATTERS TO AWS)
@@ -44,5 +37,13 @@ Search for or click "Security Groups" on side menu
 - INSTANCES / check instance you want terminated
 - INSTANCE STATE / terminate (delete) instance (wait a minute before doing the next steps)
 - SECURITY GROUPS / check your security group / click ACTIONS / delete security groups
+
+<--- PORTS MOST USED ---> 
+* 21 = FTP (File Transfer Protocol) - upload files into a file share
+* 22 = SSH (Secure Shell) - log into a Linux instance
+* 22 = SFTP (Secure File Transfer Protocol) - upload files using SSH
+* 80 = HTTP - access unsecured websites
+* 443 = HTTPS - access secured websites
+
 
 
