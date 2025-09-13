@@ -38,12 +38,14 @@ Search for or click "Security Groups" on side menu
 - INSTANCE STATE / terminate (delete) instance (wait a minute before doing the next steps)
 - SECURITY GROUPS / check your security group / click ACTIONS / delete security groups
 
-<--- PORTS MOST USED ---> 
+<--- COMMON PORTS ---> 
 * 21 = FTP (File Transfer Protocol) - upload files into a file share
 * 22 = SSH (Secure Shell) - log into a Linux instance
 * 22 = SFTP (Secure File Transfer Protocol) - upload files using SSH
 * 80 = HTTP - access unsecured websites
 * 443 = HTTPS - access secured websites
+* 3389 = RDP (Remote Desktop Protocol) - log into a Windows instance
+
 
 
 
