@@ -1,49 +1,25 @@
-#!/bin/bash
-# Use this for your user data (script from top to bottom)
-# install httpd (Linux 2 version)
-yum update -y
-yum install -y httpd
-systemctl start httpd
-systemctl enable httpd
+-SECURITY GROUPS
+Log into AWS, IAM user preferably, Root User if necessary
+Search for or click "Security Groups" on side menu
+click CREATE SECURITY GROUP - *DO NOT use default*
+Name your security group / use same name for description
+Inbound Rules : Type: HTTP, Source: Anywhere IPv4, Description: webpage
+DO NOT TOUCH OUTBOUND RULES!!
+optional: add tags
+click CREATE SECURITY GROUP / click on the security group ID in green after it is created
 
-# Get the IMDSv2 token
-TOKEN=$(curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+-EC2
+click instances / click launch instances / name it and add additional tags if necessary
+Scroll down to Instance Type: t3.micro
+create key pair: use ec2 name. leave RSA and .pem checked / click Create Key Pair and download 
+Network settings: Firewall: select existing security group and choose the one you just made
+Advanced details: copy/paste the EC2 script into the User Data section. LAUNCH INSTANCE
+Once successfully launched, click on link in green bar
+click on the box below the PUBLIC DNS, to the left of the ec2 number. It will say "Public DNS copied"
+Open browser, use http:// and paste the address. The webpage should show work. 
+If not, make sure you have the correct security group selected. If adding inbound rules when creating new security group, be sure to selected HTTP for TYPE, Anywhere IPV4, and Website for descriptions
 
-# Background the curl requests
-curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/local-ipv4 &> /tmp/local_ipv4 &
-curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/placement/availability-zone &> /tmp/az &
-curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/ &> /tmp/macid &
-wait
-
-macid=$(cat /tmp/macid)
-local_ipv4=$(cat /tmp/local_ipv4)
-az=$(cat /tmp/az)
-vpc=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/${macid}/vpc-id)
-
-echo "
-<!doctype html>
-<html lang=\"en\" class=\"h-100\">
-<head>
-<title>Details for EC2 instance</title>
-</head>
-<body>
-<div>
-<h1>AWS Instance Details</h1>
-<h1>Samurai Katana</h1>
-
-<br>
-# insert an image or GIF
-<img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com">
-<br>
-
-<p><b>Instance Name:</b> $(hostname -f) </p>
-<p><b>Instance Private Ip Address: </b> ${local_ipv4}</p>
-<p><b>Availability Zone: </b> ${az}</p>
-<p><b>Virtual Private Cloud (VPC):</b> ${vpc}</p>
-</div>
-</body>
-</html>
-" > /var/www/html/index.html
-
-# Clean up the temp files
-rm -f /tmp/local_ipv4 /tmp/az /tmp/macid
+-DELETING INSTANCES AND SECURITY GROUPS
+go to INSTANCES / check the instance you want to terminate / click on INSTANCE STATE / terminate (delete) instance
+wait a few minutes before doing the next steps
+go to SECURITY GROUPS / check your security group / click on ACTIONS / delete security groups
