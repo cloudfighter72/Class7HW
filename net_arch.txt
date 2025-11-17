@@ -1,0 +1,21 @@
+Network_Architecture.txt
+
+Region: Ohio (us-east-2)
+Availability Zones: us-east-2a, us-east-2b, us-east-2c
+
+VPC: 10.231.0.0/16
+
+***** Public Subnet *****
+
+Public Subnet A: 10.231.1.0/24
+Public Subnet B: 10.231.2.0/24
+Public Subnet C: 10.231.3.0/24
+
+***** Private Subnet *****
+
+Private Subnet A: 10.231.11.0/24
+Private Subnet B: 10.231.12.0/24
+Private Subnet C: 10.231.13.0/24
+Private Subnet D: 10.231.14.0/24
+Private Subnet E: 10.231.15.0/24
+Private Subnet F: 10.231.16.0/24
