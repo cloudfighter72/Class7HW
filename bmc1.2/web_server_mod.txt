@@ -77,11 +77,7 @@ SSH into EC2 Instance as it's running
 
 9. Modify EC2 Script and refresh the WebServer page
 
-On the command line type the following commands.
-
-```sh
-sudo vim /var/www/html/index.html
-```
+On the command line type the following commands: sudo vim /var/www/html/index.html
 - Press the letter "i" on your keyboard (lowercase i, NOT UPPERCASE I). This will change your script to INSERT MODE at the bottom left of the screen.
 - Using your keyboard arrows, move up, down, left, or right in the script to modify your script.
 
@@ -105,20 +101,4 @@ ping 8.8.8.8
 
 - Go to your EC2 Instance. Go to Action and click "Terminate Instance.
 - Go to your Security Group, click the Action button at the top and click "Delete Security Group"
-- Praise Chewbacca and Get this Money
-
-CREATE NEW REPO ON THE COMMAND LINE
-
-echo "# cloudfighter72" >> README.md
-git init
-git add README.nmd
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/cloudfighter72/wolfpackHW.git
-git push -u origin main
-
-PUSH AN EXISTING REPO FROM COMMAND LINE
-
-git remote add origin https://github.com/cloudfighter72/wolfpackHW.git
-git branch -M main
-git push -u origin main
+- Praise Chewbacca and Get this Money# homework1
